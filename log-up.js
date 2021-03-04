@@ -4,6 +4,12 @@ const {
   isValidPassword,
   isRegisteredUser,
   passwordMatches,
+  password1,
+  password2,
+  password3,
+  user1,
+  user2,
+  user3
 } = require("./main.js");
 
 // The code immediately above grabs the functions you'll
@@ -16,34 +22,66 @@ const {
 // to the four back-end functions we're requiring in
 // below, and then console.logging the right message.
 
+
+
+const Email = process.argv[2];
+const Password = process.argv[3];
+
+if (passwordMatches(Email, Password)) {
+  console.log("You're Logged In!");
+}
+
+if (isRegisteredUser(Email)) {
+  if (!passwordMatches(Email, Password)) {
+    console.log("Password Incorrect");
+  }
+} else {
+  if (isValidEmail(Email) && isValidPassword(Password)) {
+    console.log("Signed Up");
+  } else if (!isValidEmail(Email)) {
+    console.log("Invalid Email");
+  } else if (!isValidPassword(Password)) {
+    console.log("Invalid Password");
+  }
+}
+
+
+  
+
+
+  
+
+
+
+
 // App Workflow:
 
 // We'll be running our code as users by typing in
 // `node [path to this file]` on the command line,
-// followed by our email address and our password.
-// (Or the email and pw we want to test!)
-// We want to perform checks on that email and
+// followed by our Email address and our password.
+// (Or the Email and pw we want to test!)
+// We want to perform checks on that Email and
 // password to arrive at one of the following messages
 // for the user:
 
-// 1. If the email belongs to one of our registered
+// 1. If the Email belongs to one of our registered
 // users AND the password matches that user, tell them
 // that they are logged in.
 
-// 2. If the email belongs to one of our registered
+// 2. If the Email belongs to one of our registered
 // users but the password does not match that user,
 // tell them their password is incorrect.
 
-// 3. If the email does not belong to one of our
-// registered users, and the email and password are
+// 3. If the Email does not belong to one of our
+// registered users, and the Email and password are
 // both valid, tell them they're signed up.
 
-// 4. If the email does not belong to one of our
-// registered users, and the email is not valid,
-// tell them their email is not valid. Preferably
-// also tell them what makes a valid email.
+// 4. If the Email does not belong to one of our
+// registered users, and the Email is not valid,
+// tell them their Email is not valid. Preferably
+// also tell them what makes a valid Email.
 
-// 5. If the email does not belong to one of our
+// 5. If the Email does not belong to one of our
 // registered users, and the password is not valid,
 // tell them their password is not valid. Preferably
 // also tell them what makes a valid password.
@@ -60,3 +98,6 @@ const {
 
 // Being sure to do all that's outlined above, write
 // your code below!
+
+
+
